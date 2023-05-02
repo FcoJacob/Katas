@@ -1,12 +1,9 @@
 import './assets/styles/style.css'
-import { setupCounter } from './utils/counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     <div class="card">
-      <button id="counter" type="button"></button>
+      <h1>KATA: TIC TAC TOE</h1>
     </div>
   </div>
 `
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
