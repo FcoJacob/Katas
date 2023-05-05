@@ -14,12 +14,13 @@ export default class Game {
     console.log(this.message);
   }
 
-  private startGame() {
+  private playGame() {
     if(this.playerTurn) {
       this.writeMessage('It is the turn of the X: ')
     } else {
       this.writeMessage('It is the turn of the O: ')
     }
+    this.playerTurn = !this.playerTurn;
   }
 
   init() {
@@ -29,7 +30,8 @@ export default class Game {
       [' ', ' ', ' '],
       [' ', ' ', ' ']
     ]
-    this.startGame()
+    this.playGame()
+    this.playGame()
   };
 }
 

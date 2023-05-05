@@ -17,4 +17,12 @@ describe('game tic tac toe', () => {
         game.init();
         expect(logSpy).toHaveBeenCalledWith('It is the turn of the X: ');
     })
+
+    test('should play O after of X', () => {
+        const logSpy = vi.spyOn(global.console, 'log');
+        game.init();
+
+        expect(logSpy).toHaveBeenCalledWith('It is the turn of the X: ');
+        expect(logSpy).toHaveBeenCalledWith('It is the turn of the O: ');
+    })
 })
