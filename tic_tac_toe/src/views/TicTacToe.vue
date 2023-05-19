@@ -26,11 +26,13 @@
         <div class="w-4/12 h-full flex flex-col justify-around items-center">
           <span class="font-bold">{{ messagesGame }}</span>
           <button
+            v-if="showBtnStartGame"
             class="w-full rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800"
             @click.prevent="startGame"
           >
             Start Game
           </button>
+          <span v-else class="font-bold">00:00</span>
         </div>
         <!-- Register player O -->
         <div class="w-4/12 h-full flex justify-center items-center">
@@ -42,14 +44,17 @@
 </template>
 
 <script setup lang="ts">
-import TicTacToe from "@/views/TicTacToe.ts";
+import TicTacToe from "@/views/TicTacToe";
 import { ref } from "vue";
 
 const initGame = new TicTacToe()
 const messagesGame = ref(initGame.getMessage())
 const tabletGame = ref(initGame.getTabletGame())
+const showBtnStartGame = ref(true)
+
 const startGame = () => {
   initGame.init()
   messagesGame.value = initGame.getMessage()
+  showBtnStartGame.value = false
 }
 </script>

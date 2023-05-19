@@ -21,6 +21,10 @@ export default class TicTacToe {
         return this.gameBoard
     }
 
+    public getPlayerTurn() {
+        return this.playerTurn
+    }
+
     private playGame() {
         if(this.playerTurn) {
             this.setMessage('Is the turn of the X')
@@ -32,5 +36,5 @@ export default class TicTacToe {
 
     init() {
         this.playGame()
-    };
+    }
 }
