@@ -9,21 +9,28 @@
           class="w-full h-full bg-amber-100 py-3 px-4 flex flex-wrap"
       >
         <button
-          v-for="value in 9"
+          v-for="value in tabletGame"
           :key="value"
           class="w-1/3 h-1/3 bg-white border border-solid border-amber-200 font-bold text-9xl"
+          :disabled="false"
         >
-          0
+
         </button>
       </div>
-      <div class="w-full h-20 border-t border-solid border-gray-500 flex justify-around items-center">
+      <div class="w-full h-28 border-t border-solid border-gray-500 flex justify-around items-center">
         <!-- Register player X -->
         <div class="w-4/12 h-full flex justify-center items-center">
           Action X
         </div>
         <!-- Timer for change of player -->
-        <div class="w-4/12 h-full flex justify-center items-center">
-          Timer
+        <div class="w-4/12 h-full flex flex-col justify-around items-center">
+          <span class="font-bold">{{ messagesGame }}</span>
+          <button
+            class="w-full rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800"
+            @click.prevent="startGame"
+          >
+            Start Game
+          </button>
         </div>
         <!-- Register player O -->
         <div class="w-4/12 h-full flex justify-center items-center">
@@ -33,5 +40,16 @@
     </div>
   </div>
 </template>
-<script setup>
+
+<script setup lang="ts">
+import TicTacToe from "@/views/TicTacToe.ts";
+import { ref } from "vue";
+
+const initGame = new TicTacToe()
+const messagesGame = ref(initGame.getMessage())
+const tabletGame = ref(initGame.getTabletGame())
+const startGame = () => {
+  initGame.init()
+  messagesGame.value = initGame.getMessage()
+}
 </script>

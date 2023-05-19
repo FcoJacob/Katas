@@ -18,4 +18,14 @@ describe('TicTacToe.vue', () => {
 
         expect(boxInTable).toBe(9)
     })
+
+    // test('should show text corresponding turn of player X', () => {
+    //     render(TicTacToe)
+    //
+    //     const startGameBtn = screen.queryByRole('button', { name: 'Start Game'})!;
+    //     // userEvent.click(startGameBtn)
+    //
+    //     expect('The game is ready!').not.toBeInTheDocument()
+    //     expect('Is the turn of the X').toBeInTheDocument()
+    // })
 })
