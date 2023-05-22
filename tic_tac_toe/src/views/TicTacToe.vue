@@ -9,34 +9,38 @@
           class="w-full h-full bg-amber-100 py-3 px-4 flex flex-wrap"
       >
         <button
-          v-for="value in tabletGame"
-          :key="value"
-          class="w-1/3 h-1/3 bg-white border border-solid border-amber-200 font-bold text-9xl"
+          v-for="(value, index) in tabletGame"
+          :key="index+value"
+          role="buttonTabletGame"
+          class="w-1/3 h-1/3 bg-white border border-solid border-amber-200 font-bold text-8xl"
           :disabled="false"
+          @click="playerMovement(index)"
         >
-
+          {{ value }}
         </button>
       </div>
       <div class="w-full h-28 border-t border-solid border-gray-500 flex justify-around items-center">
         <!-- Register player X -->
-        <div class="w-4/12 h-full flex justify-center items-center">
-          Action X
+        <div class="w-4/12 h-full flex flex-col justify-start items-center">
+          <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player X</span>
+          <span class="w-full h-2/3 flex justify-center items-center">{{ playerX }}</span>
         </div>
         <!-- Timer for change of player -->
-        <div class="w-4/12 h-full flex flex-col justify-around items-center">
-          <span class="font-bold">{{ messagesGame }}</span>
+        <div class="w-4/12 h-full flex flex-col justify-start items-center">
+          <span class="w-full h-1/3 font-bold flex justify-center items-center">{{ messagesGame }}</span>
           <button
             v-if="showBtnStartGame"
-            class="w-full rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800"
+            class="w-full h-1/3 mt-3 rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800 flex justify-center items-center"
             @click.prevent="startGame"
           >
             Start Game
           </button>
-          <span v-else class="font-bold">00:00</span>
+          <span v-else class="w-full h-2/3 font-bold flex justify-center items-center">05:00</span>
         </div>
         <!-- Register player O -->
-        <div class="w-4/12 h-full flex justify-center items-center">
-          Action O
+        <div class="w-4/12 h-full flex flex-col justify-start items-center">
+          <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player O</span>
+          <span class="w-full h-2/3 flex justify-center items-center">{{ playerO }}</span>
         </div>
       </div>
     </div>
@@ -45,16 +49,22 @@
 
 <script setup lang="ts">
 import TicTacToe from "@/views/TicTacToe";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const initGame = new TicTacToe()
-const messagesGame = ref(initGame.getMessage())
+const messagesGame = computed(() => initGame.getMessage())
 const tabletGame = ref(initGame.getTabletGame())
+const { playerX, playerO } = initGame.getScore()
 const showBtnStartGame = ref(true)
 
 const startGame = () => {
   initGame.init()
-  messagesGame.value = initGame.getMessage()
   showBtnStartGame.value = false
+}
+
+const playerMovement = (index: number) => {
+  if(!showBtnStartGame.value) {
+    initGame.getPlayerTurn() ? initGame.setPlayerMovementX(index) : initGame.setPlayerMovementO(index)
+  }
 }
 </script>
