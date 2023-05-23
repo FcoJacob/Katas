@@ -39,15 +39,19 @@ export default class TicTacToe {
     }
     
     public setPlayerMovementX(index: number) {
-        this.gameBoard.value[index] = 'X';
-        this.playerTurn.value = false;
-        this.setMessage('Is the turn of the O')
+        if(this.gameBoard.value[index] === ' ') {
+            this.gameBoard.value[index] = 'X';
+            this.playerTurn.value = false;
+            this.setMessage('Is the turn of the O')
+        }
     }
 
     public setPlayerMovementO(index: number) {
-        this.gameBoard.value[index] = 'O';
-        this.playerTurn.value = true;
-        this.setMessage('Is the turn of the X')
+        if(this.gameBoard.value[index] === ' ') {
+            this.gameBoard.value[index] = 'O';
+            this.playerTurn.value = true;
+            this.setMessage('Is the turn of the X')
+        }
     }
 
     private playGame() {
