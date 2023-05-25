@@ -21,9 +21,16 @@
       </div>
       <div class="w-full h-28 border-t border-solid border-gray-500 flex justify-around items-center">
         <!-- Register player X -->
-        <div class="w-4/12 h-full flex flex-col justify-start items-center">
+        <div
+          data-testid="scoreX"
+          class="w-4/12 h-full flex flex-col justify-start items-center"
+        >
           <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player X</span>
-          <span class="w-full h-2/3 flex justify-center items-center">{{ playerX }}</span>
+          <span
+            class="w-full h-2/3 flex justify-center items-center"
+          >
+            {{ score.playerX }}
+          </span>
         </div>
         <!-- Timer for change of player -->
         <div class="w-4/12 h-full flex flex-col justify-start items-center">
@@ -38,9 +45,14 @@
           <span v-else class="w-full h-2/3 font-bold flex justify-center items-center">05:00</span>
         </div>
         <!-- Register player O -->
-        <div class="w-4/12 h-full flex flex-col justify-start items-center">
+        <div
+          data-testid="scoreO"
+          class="w-4/12 h-full flex flex-col justify-start items-center"
+        >
           <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player O</span>
-          <span class="w-full h-2/3 flex justify-center items-center">{{ playerO }}</span>
+          <span class="w-full h-2/3 flex justify-center items-center">
+            {{ score.playerO }}
+          </span>
         </div>
       </div>
     </div>
@@ -53,8 +65,8 @@ import { computed, ref } from "vue";
 
 const initGame = new TicTacToe()
 const messagesGame = computed(() => initGame.getMessage())
-const tabletGame = ref(initGame.getTabletGame())
-const { playerX, playerO } = initGame.getScore()
+const tabletGame = computed(() => initGame.getTabletGame())
+const score = computed(() => initGame.getScore())
 const showBtnStartGame = ref(true)
 
 const startGame = () => {
@@ -64,7 +76,7 @@ const startGame = () => {
 
 const playerMovement = (index: number) => {
   if(!showBtnStartGame.value) {
-    initGame.getPlayerTurn() ? initGame.setPlayerMovementX(index) : initGame.setPlayerMovementO(index)
+    initGame.play(index)
   }
 }
 </script>

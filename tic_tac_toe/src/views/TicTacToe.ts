@@ -18,6 +18,58 @@ export default class TicTacToe {
     private setMessage(message: string) {
         this.message.value = message
     }
+    
+    private setPlayerMovementX(index: number) {
+        if(this.gameBoard.value[index] === ' ') {
+            this.gameBoard.value[index] = 'X';
+        }
+    }
+
+    private setPlayerMovementO(index: number) {
+        if(this.gameBoard.value[index] === ' ') {
+            this.gameBoard.value[index] = 'O';
+        }
+    }
+
+    private checkWinner(player: string): boolean {
+        const winningCombinations = [
+          [0, 1, 2], [3, 4, 5], [6, 7, 8],
+          [0, 3, 6], [1, 4, 7], [2, 5, 8],
+          [0, 4, 8], [2, 4, 6]
+        ];
+      
+        for (const combinations of winningCombinations) {
+          const [a, b, c] = combinations;
+          if (this.gameBoard.value[a] === player && this.gameBoard.value[a] === this.gameBoard.value[b] && this.gameBoard.value[a] === this.gameBoard.value[c]) {
+            return true;
+          }
+        }
+        return false;
+    }
+
+    public play(index: number) {
+        if(this.playerTurn.value) {
+            this.setMessage('Is the turn of the X')
+            this.setPlayerMovementX(index)
+            if(this.checkWinner('X')) {
+                this.setMessage('X win!!')
+                this.scoreX.value += 1
+            } else {
+                this.playerTurn.value = false
+                this.setMessage('Is the turn of the O')
+            }
+        } else {
+            this.setMessage('Is the turn of the O')
+            this.setPlayerMovementO(index)
+            if(this.checkWinner('O')) {
+                this.setMessage('O win!!')
+                this.scoreO.value += 1
+            } else {
+                this.playerTurn.value = true
+                this.setMessage('Is the turn of the X')
+            }
+        }
+    }
 
     public getMessage() {
         return this.message.value
@@ -37,30 +89,13 @@ export default class TicTacToe {
             playerO: this.scoreO.value
         }
     }
-    
-    public setPlayerMovementX(index: number) {
-        if(this.gameBoard.value[index] === ' ') {
-            this.gameBoard.value[index] = 'X';
-            this.playerTurn.value = false;
-            this.setMessage('Is the turn of the O')
-        }
-    }
-
-    public setPlayerMovementO(index: number) {
-        if(this.gameBoard.value[index] === ' ') {
-            this.gameBoard.value[index] = 'O';
-            this.playerTurn.value = true;
-            this.setMessage('Is the turn of the X')
-        }
-    }
-
-    private playGame() {
-        if(this.playerTurn.value) {
-            this.setMessage('Is the turn of the X')
-        }
-    }
 
     init() {
-        this.playGame()
+        this.message.value = 'The game is ready!';
+        this.gameBoard.value = [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ];
+        this.playerTurn.value = true;
+        this.scoreX.value = 0;
+        this.scoreO.value = 0;
+        this.setMessage('Is the turn of the X')
     }
 }

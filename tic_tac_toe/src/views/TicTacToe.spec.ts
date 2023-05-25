@@ -34,10 +34,10 @@ describe('TicTacToe.vue', () => {
 
         const startGameBtn = screen.getByRole('button', { name: 'Start Game' });
         await userEvent.click(startGameBtn)
-        const actionX = screen.queryAllByRole('buttonTabletGame', { name: '' });
-        await userEvent.click(actionX[0])
+        const action = screen.queryAllByRole('buttonTabletGame', { name: '' });
+        await userEvent.click(action[0])
         expect(screen.queryByText('X')).toBeInTheDocument()
-        await userEvent.click(actionX[0])
+        await userEvent.click(action[0])
 
         expect(screen.queryByText('O')).not.toBeInTheDocument()
     })
@@ -51,6 +51,24 @@ describe('TicTacToe.vue', () => {
         
             expect(screen.queryByText('The game is ready!')).not.toBeInTheDocument()
             expect(screen.getByText('Is the turn of the X')).toBeInTheDocument()
+        })
+
+        test('should won the game if have 3 positions consecutive', async () => {
+            render(TicTacToe)
+            
+            const startGameBtn = screen.getByRole('button', { name: 'Start Game' });
+            await userEvent.click(startGameBtn)
+            const action = screen.queryAllByRole('buttonTabletGame', { name: '' });
+            await userEvent.click(action[0])
+            await userEvent.click(action[4])
+            await userEvent.click(action[1])
+            await userEvent.click(action[8])
+            await userEvent.click(action[2])
+            const scoreX = screen.getByTestId('scoreX')
+            const result = within(scoreX).getByText('1')
+
+            expect(screen.getByText('X win!!')).toBeInTheDocument()
+            expect(result).toBeInTheDocument()
         })
     })
 
@@ -68,6 +86,25 @@ describe('TicTacToe.vue', () => {
             expect(screen.queryByText('X')).toBeInTheDocument()
             expect(screen.queryByText('Is the turn of the X')).not.toBeInTheDocument()
             expect(screen.getByText('Is the turn of the O')).toBeInTheDocument()
+        })
+
+        test('should won the game if have 3 positions consecutive', async () => {
+            render(TicTacToe)
+            
+            const startGameBtn = screen.getByRole('button', { name: 'Start Game' });
+            await userEvent.click(startGameBtn)
+            const action = screen.queryAllByRole('buttonTabletGame', { name: '' });
+            await userEvent.click(action[0])
+            await userEvent.click(action[4])
+            await userEvent.click(action[1])
+            await userEvent.click(action[2])
+            await userEvent.click(action[5])
+            await userEvent.click(action[6])
+            const scoreO = screen.getByTestId('scoreO')
+            const result = within(scoreO).getByText('1')
+
+            expect(screen.getByText('O win!!')).toBeInTheDocument()
+            expect(result).toBeInTheDocument()
         })
     })    
 })
