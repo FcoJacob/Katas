@@ -1,5 +1,5 @@
 import { describe, test } from 'vitest'
-import {render, screen, within} from '@testing-library/vue'
+import {render, screen, waitFor, within} from '@testing-library/vue'
 import TicTacToe from "@/views/TicTacToe.vue";
 import userEvent from '@testing-library/user-event'
 
@@ -56,6 +56,23 @@ describe('TicTacToe.vue', () => {
         const returnGameBtn = screen.getByRole('button', { name: 'Return Game?' });
 
         expect(returnGameBtn).toBeInTheDocument()
+    })
+
+    test('should start a new game by clicking on return game', async () => {
+        render(TicTacToe)
+
+        const startGameBtn = screen.getByRole('button', { name: 'Start Game' });
+        await userEvent.click(startGameBtn)
+        const action = screen.queryAllByRole('buttonTabletGame', { name: '' });
+        await userEvent.click(action[0])
+        await userEvent.click(action[4])
+        await userEvent.click(action[1])
+        await userEvent.click(action[8])
+        await userEvent.click(action[2])
+
+        waitFor(() => {
+            expect(screen.getByText('Is the turn of the X')).toBeInTheDocument()
+        })
     })
 
     describe('when the turn is of the player X', () => {

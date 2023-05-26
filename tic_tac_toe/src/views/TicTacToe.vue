@@ -83,9 +83,7 @@ const startGame = () => {
 }
 
 const restartGame = () => {
-  console.log("restartGame")
-  // initGame.init()
-  // showBtnStartGame.value = true
+  initGame.init()
 }
 
 const playerMovement = (index: number) => {

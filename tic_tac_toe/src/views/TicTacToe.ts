@@ -102,8 +102,7 @@ export default class TicTacToe {
         this.message.value = 'The game is ready!';
         this.gameBoard.value = [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ];
         this.playerTurn.value = true;
-        this.scoreX.value = 0;
-        this.scoreO.value = 0;
+        this.returnGame.value = false;
         this.setMessage('Is the turn of the X')
     }
 }
