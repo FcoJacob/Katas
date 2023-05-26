@@ -69,10 +69,10 @@ describe('TicTacToe.vue', () => {
         await userEvent.click(action[1])
         await userEvent.click(action[8])
         await userEvent.click(action[2])
+        const returnGameBtn = screen.getByRole('button', { name: 'Return Game?' });
+        await userEvent.click(returnGameBtn)
 
-        waitFor(() => {
-            expect(screen.getByText('Is the turn of the X')).toBeInTheDocument()
-        })
+        expect(screen.getByText('Is the turn of the X')).toBeInTheDocument()
     })
 
     describe('when the turn is of the player X', () => {
