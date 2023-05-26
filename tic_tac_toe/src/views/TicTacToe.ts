@@ -49,6 +49,10 @@ export default class TicTacToe {
         return false;
     }
 
+    private checkPositionsFilled(): boolean {
+        return this.gameBoard.value.every(value => value !== ' ');
+    }
+
     public play(index: number) {
         if(this.playerTurn.value) {
             this.setMessage('Is the turn of the X')
@@ -72,6 +76,10 @@ export default class TicTacToe {
                 this.playerTurn.value = true
                 this.setMessage('Is the turn of the X')
             }
+        }
+        if(this.checkPositionsFilled()) {
+            this.setMessage('¡The game ended in a draw!')
+            this.returnGame.value = true;
         }
     }
 
