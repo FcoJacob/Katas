@@ -42,6 +42,22 @@ describe('TicTacToe.vue', () => {
         expect(screen.queryByText('O')).not.toBeInTheDocument()
     })
 
+    test('should be able to see the button to restart a game, when a player wins', async () => {
+        render(TicTacToe)
+
+        const startGameBtn = screen.getByRole('button', { name: 'Start Game' });
+        await userEvent.click(startGameBtn)
+        const action = screen.queryAllByRole('buttonTabletGame', { name: '' });
+        await userEvent.click(action[0])
+        await userEvent.click(action[4])
+        await userEvent.click(action[1])
+        await userEvent.click(action[8])
+        await userEvent.click(action[2])
+        const returnGameBtn = screen.getByRole('button', { name: 'Return Game?' });
+
+        expect(returnGameBtn).toBeInTheDocument()
+    })
+
     describe('when the turn is of the player X', () => {
         test('should show text corresponding turn of player X', async () => {
             render(TicTacToe)

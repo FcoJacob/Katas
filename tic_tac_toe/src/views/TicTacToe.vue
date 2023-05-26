@@ -25,32 +25,39 @@
           data-testid="scoreX"
           class="w-4/12 h-full flex flex-col justify-start items-center"
         >
-          <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player X</span>
+          <span class="w-full h-1/3 font-bold flex justify-center items-center pt-2">Won por player X</span>
           <span
-            class="w-full h-2/3 flex justify-center items-center"
+            class="w-full h-2/3 flex justify-center items-center text-2xl pb-2 font-bold"
           >
             {{ score.playerX }}
           </span>
         </div>
         <!-- Timer for change of player -->
         <div class="w-4/12 h-full flex flex-col justify-start items-center">
-          <span class="w-full h-1/3 font-bold flex justify-center items-center">{{ messagesGame }}</span>
+          <span class="w-full h-1/3 font-bold flex justify-center items-center pt-2">{{ messagesGame }}</span>
           <button
-            v-if="showBtnStartGame"
+            v-if="showBtnReturnGame && !showBtnStartGame"
+            class="w-full h-1/3 mt-3 rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800 flex justify-center items-center"
+            @click.prevent="restartGame"
+          >
+            Return Game?
+          </button>
+          <button
+            v-else-if="showBtnStartGame"
             class="w-full h-1/3 mt-3 rounded-md mb-2 bg-purple-700 shadow-sm shadow-purple-400 py-1 text-white font-semibold active:shadow-none animate-pulse hover:animate-none hover:bg-purple-800 flex justify-center items-center"
             @click.prevent="startGame"
           >
             Start Game
           </button>
-          <span v-else class="w-full h-2/3 font-bold flex justify-center items-center">05:00</span>
+          <span v-else class="w-full h-2/3 font-bold flex justify-center items-center text-2xl pb-2">05:00</span>
         </div>
         <!-- Register player O -->
         <div
           data-testid="scoreO"
           class="w-4/12 h-full flex flex-col justify-start items-center"
         >
-          <span class="w-full h-1/3 font-bold flex justify-center items-center">Won por player O</span>
-          <span class="w-full h-2/3 flex justify-center items-center">
+          <span class="w-full h-1/3 font-bold flex justify-center items-center pt-2">Won por player O</span>
+          <span class="w-full h-2/3 flex justify-center items-center text-2xl pb-2 font-bold">
             {{ score.playerO }}
           </span>
         </div>
@@ -67,11 +74,18 @@ const initGame = new TicTacToe()
 const messagesGame = computed(() => initGame.getMessage())
 const tabletGame = computed(() => initGame.getTabletGame())
 const score = computed(() => initGame.getScore())
+const showBtnReturnGame = computed(() => initGame.getReturnGame())
 const showBtnStartGame = ref(true)
 
 const startGame = () => {
   initGame.init()
   showBtnStartGame.value = false
+}
+
+const restartGame = () => {
+  console.log("restartGame")
+  // initGame.init()
+  // showBtnStartGame.value = true
 }
 
 const playerMovement = (index: number) => {

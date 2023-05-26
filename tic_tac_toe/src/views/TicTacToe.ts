@@ -1,11 +1,12 @@
-import { ref } from 'vue'
-import type { Ref } from 'vue'
+import { ref, type Ref } from 'vue'
+import type { Score } from './types'
 export default class TicTacToe {
     private message: Ref<string>;
     private gameBoard: Ref<string[]>;
     private playerTurn: Ref<boolean>;
     private scoreX: Ref<number>;
     private scoreO: Ref<number>;
+    private returnGame: Ref<boolean>;
 
     constructor() {
         this.message = ref('The game is ready!');
@@ -13,6 +14,7 @@ export default class TicTacToe {
         this.playerTurn = ref(true);
         this.scoreX = ref(0);
         this.scoreO = ref(0);
+        this.returnGame = ref(false);
     }
 
     private setMessage(message: string) {
@@ -54,6 +56,7 @@ export default class TicTacToe {
             if(this.checkWinner('X')) {
                 this.setMessage('X win!!')
                 this.scoreX.value += 1
+                this.returnGame.value = true;
             } else {
                 this.playerTurn.value = false
                 this.setMessage('Is the turn of the O')
@@ -64,6 +67,7 @@ export default class TicTacToe {
             if(this.checkWinner('O')) {
                 this.setMessage('O win!!')
                 this.scoreO.value += 1
+                this.returnGame.value = true;
             } else {
                 this.playerTurn.value = true
                 this.setMessage('Is the turn of the X')
@@ -71,19 +75,23 @@ export default class TicTacToe {
         }
     }
 
-    public getMessage() {
+    public getReturnGame(): boolean {
+        return this.returnGame.value;
+    }
+
+    public getMessage(): string {
         return this.message.value
     }
 
-    public getTabletGame() {
+    public getTabletGame(): Array<string> {
         return this.gameBoard.value
     }
 
-    public getPlayerTurn() {
+    public getPlayerTurn(): boolean {
         return this.playerTurn.value
     }
 
-    public getScore() {
+    public getScore(): Score {
         return {
             playerX: this.scoreX.value,
             playerO: this.scoreO.value
