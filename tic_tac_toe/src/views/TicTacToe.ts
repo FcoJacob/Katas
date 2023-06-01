@@ -53,30 +53,34 @@ export default class TicTacToe {
         return this.gameBoard.value.every(value => value !== ' ');
     }
 
-    public play(index: number) {
-        if(this.playerTurn.value) {
-            this.setMessage('Is the turn of the X')
-            this.setPlayerMovementX(index)
-            if(this.checkWinner('X')) {
-                this.setMessage('X win!!')
-                this.scoreX.value += 1
-                this.returnGame.value = true;
-            } else {
-                this.playerTurn.value = false
-                this.setMessage('Is the turn of the O')
-            }
+    private playPlayerX(index: number) {
+        this.setMessage('Is the turn of the X')
+        this.setPlayerMovementX(index)
+        if(this.checkWinner('X')) {
+            this.setMessage('X win!!')
+            this.scoreX.value += 1
+            this.returnGame.value = true;
         } else {
+            this.playerTurn.value = false
             this.setMessage('Is the turn of the O')
-            this.setPlayerMovementO(index)
-            if(this.checkWinner('O')) {
-                this.setMessage('O win!!')
-                this.scoreO.value += 1
-                this.returnGame.value = true;
-            } else {
-                this.playerTurn.value = true
-                this.setMessage('Is the turn of the X')
-            }
         }
+    }
+
+    private playPlayerO(index: number) {
+        this.setMessage('Is the turn of the O')
+        this.setPlayerMovementO(index)
+        if(this.checkWinner('O')) {
+            this.setMessage('O win!!')
+            this.scoreO.value += 1
+            this.returnGame.value = true;
+        } else {
+            this.playerTurn.value = true
+            this.setMessage('Is the turn of the X')
+        }
+    }
+
+    public play(index: number) {
+        this.playerTurn.value ? this.playPlayerX(index) : this.playPlayerO(index);
         if(this.checkPositionsFilled()) {
             this.setMessage('¡The game ended in a draw!')
             this.returnGame.value = true;
