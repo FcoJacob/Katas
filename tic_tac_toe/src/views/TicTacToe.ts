@@ -34,7 +34,7 @@ export default class TicTacToe {
     }
 
     private checkWinner(player: string): boolean {
-        const winningCombinations = [
+        const winningCombinations: number[][] = [
           [0, 1, 2], [3, 4, 5], [6, 7, 8],
           [0, 3, 6], [1, 4, 7], [2, 5, 8],
           [0, 4, 8], [2, 4, 6]
@@ -49,14 +49,18 @@ export default class TicTacToe {
         return false;
     }
 
-    private checkPositionsFilled(): boolean {
-        return this.gameBoard.value.every(value => value !== ' ');
+    private checkAllPositionsFilled(): void {
+        const allBoxFilledIn = this.gameBoard.value.every(value => value !== ' ');
+        if (allBoxFilledIn) {
+            this.setMessage('¡The game ended in a draw!')
+            this.returnGame.value = true;
+        }
     }
 
-    private playPlayerX(index: number) {
+    private playPlayerX(index: number): void {
         this.setMessage('Is the turn of the X')
         this.setPlayerMovementX(index)
-        if(this.checkWinner('X')) {
+        if (this.checkWinner('X')) {
             this.setMessage('X win!!')
             this.scoreX.value += 1
             this.returnGame.value = true;
@@ -66,7 +70,7 @@ export default class TicTacToe {
         }
     }
 
-    private playPlayerO(index: number) {
+    private playPlayerO(index: number): void {
         this.setMessage('Is the turn of the O')
         this.setPlayerMovementO(index)
         if(this.checkWinner('O')) {
@@ -79,12 +83,9 @@ export default class TicTacToe {
         }
     }
 
-    public play(index: number) {
+    public play(index: number): void {
         this.playerTurn.value ? this.playPlayerX(index) : this.playPlayerO(index);
-        if(this.checkPositionsFilled()) {
-            this.setMessage('¡The game ended in a draw!')
-            this.returnGame.value = true;
-        }
+        this.checkAllPositionsFilled()
     }
 
     public getReturnGame(): boolean {
@@ -110,7 +111,7 @@ export default class TicTacToe {
         }
     }
 
-    init() {
+    init(): void {
         this.message.value = 'The game is ready!';
         this.gameBoard.value = [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ];
         this.playerTurn.value = true;
