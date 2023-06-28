@@ -24,4 +24,14 @@ describe('TicTacToe', () => {
 
         expect(Game.getPlayerTurn()).toBe(false)
     })
+
+    it('should not be able to play the same position twice', () => {
+        const Game: TicTacToe = new TicTacToe();
+        Game.init();
+
+        Game.play(1);
+        Game.play(1);
+
+        expect(Game.getTabletGame()[1]).toBe('X')
+    })
 })
