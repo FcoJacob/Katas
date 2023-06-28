@@ -20,6 +20,8 @@ describe('TicTacToe', () => {
         const Game: TicTacToe = new TicTacToe();
         Game.init();
 
+        Game.play(1);
+
         expect(Game.getPlayerTurn()).toBe(false)
     })
 })
