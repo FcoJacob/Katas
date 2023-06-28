@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1042395f-d5e4-4140-832e-551e0dc2481d" name="Changes" comment="test: Add new kata&#10;&#10;Added config for Kata Leap Year :white_check_mark: first text green.">
-      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leap_year/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leap_year/leap_year.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leap_year/leap_year.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tic_tac_toe/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/tic_tac_toe/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leap_year/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/leap_year/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +64,20 @@
       <recent name="C:\Users\fsarmiento\Documents\Katas\tic_tac_toe\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Jest.leap_year_kata.should return false if it is divisible by 100 but not by 400">
+    <configuration name="leap_year_kata.should return false if it is divisible by 100 but not by 400" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/leap_year/leap_year.spec.ts" />
+      <test-names>
+        <test-name value="leap_year_kata" />
+        <test-name value="should return false if it is divisible by 100 but not by 400" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="leap_year_kata.should return leap year if it is divisible by 400" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -88,8 +91,23 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="leap_year_kata.should return true if it is divisible by 400" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/leap_year/leap_year.spec.ts" />
+      <test-names>
+        <test-name value="leap_year_kata" />
+        <test-name value="should return true if it is divisible by 400" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.leap_year_kata.should return false if it is divisible by 100 but not by 400" />
+        <item itemvalue="Jest.leap_year_kata.should return true if it is divisible by 400" />
         <item itemvalue="Jest.leap_year_kata.should return leap year if it is divisible by 400" />
       </list>
     </recent_temporary>
@@ -104,7 +122,7 @@
       <updated>1684411235170</updated>
       <workItem from="1684411236529" duration="6947000" />
       <workItem from="1684419821520" duration="4914000" />
-      <workItem from="1687934112315" duration="2956000" />
+      <workItem from="1687934112315" duration="3049000" />
     </task>
     <task id="LOCAL-00001" summary="Feature: Change of concept, creating game TIC TAC TOE! ;)">
       <created>1685693056224</created>
@@ -113,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1685693056224</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test: Add new kata&#10;&#10;Added config for Kata Leap Year :white_check_mark: first text green.">
+      <option name="closed" value="true" />
+      <created>1687937096138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687937096138</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,13 +161,5 @@
     <MESSAGE value="Feature: Change of concept, creating game TIC TAC TOE! ;)" />
     <MESSAGE value="test: Add new kata&#10;&#10;Added config for Kata Leap Year :white_check_mark: first text green." />
     <option name="LAST_COMMIT_MESSAGE" value="test: Add new kata&#10;&#10;Added config for Kata Leap Year :white_check_mark: first text green." />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>test</type>
-    <subject>Add new kata</subject>
-    <body>Added config for Kata Leap Year and  first text green.</body>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>
