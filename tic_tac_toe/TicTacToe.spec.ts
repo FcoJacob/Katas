@@ -34,4 +34,52 @@ describe('TicTacToe', () => {
 
         expect(Game.getTabletGame()[1]).toBe('X')
     })
+
+    it('should win the game the player X', () => {
+        const Game: TicTacToe = new TicTacToe();
+        Game.init();
+
+        Game.play(0);
+        Game.play(4);
+        Game.play(2);
+        Game.play(7);
+        Game.play(1);
+
+        expect(Game.getScore().playerX).toBe(1)
+        expect(Game.getScore().playerO).toBe(0)
+    })
+
+    it('should win the game the player O', () => {
+        const Game: TicTacToe = new TicTacToe();
+        Game.init();
+
+        Game.play(0);
+        Game.play(4);
+        Game.play(2);
+        Game.play(7);
+        Game.play(8);
+        Game.play(1);
+
+        expect(Game.getScore().playerX).toBe(0)
+        expect(Game.getScore().playerO).toBe(1)
+    })
+
+    it('should end in a draw if no one wins and there are no free positions left', () => {
+        const Game: TicTacToe = new TicTacToe();
+        Game.init();
+
+        Game.play(0);
+        Game.play(2);
+        Game.play(1);
+        Game.play(3);
+        Game.play(5);
+        Game.play(4);
+        Game.play(8);
+        Game.play(7)
+        Game.play(6);
+
+        expect(Game.getMessage()).toBe('¡The game ended in a draw!')
+        expect(Game.getScore().playerX).toBe(0)
+        expect(Game.getScore().playerO).toBe(0)
+    })
 })
