@@ -15,4 +15,11 @@ describe('TicTacToe', () => {
 
         expect(Game.getPlayerTurn()).toBe(true)
     })
+
+    it('after playing X, it should be the turn of O', () => {
+        const Game: TicTacToe = new TicTacToe();
+        Game.init();
+
+        expect(Game.getPlayerTurn()).toBe(false)
+    })
 })
