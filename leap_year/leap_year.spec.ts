@@ -16,4 +16,9 @@ describe('leap_year_kata', () => {
         const isLeapYear = new LeapYear().isLeapYear(1404);
         expect(isLeapYear).toBe(true);
     });
+
+    it('should return false if not divisible by 4', () => {
+        const isLeapYear = new LeapYear().isLeapYear(1405);
+        expect(isLeapYear).toBe(false);
+    });
 })
