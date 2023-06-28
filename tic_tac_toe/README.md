@@ -1,6 +1,6 @@
 # Kata: Tic Tac Toe
 
-Realizo esta kata completando los test para el comportamiento que se espera aplicando TDD, solo me he centrado en completar las funcionalidades *(No he realizado parte visual)*.
+Realizo esta kata completando los test para el comportamiento que se espera aplicando TDD, solo me he centrado en completar las funcionalidades.
 
 
 ## 📝 Requerimientos
