@@ -1,5 +1,11 @@
 export default class LeapYear {
-    public isLeapYear(year: number): boolean {
-        return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+    private readonly year: number;
+
+    constructor(year: number) {
+        this.year = year;
+    }
+
+    public isLeapYear(): boolean {
+        return this.year % 400 === 0 || (this.year % 4 === 0 && this.year % 100 !== 0)
     }
 }
