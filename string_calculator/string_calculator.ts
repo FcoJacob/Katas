@@ -6,6 +6,7 @@ export default class StringCalculator {
     }
 
     public add(): number {
+        if (this.value === '') return 0;
         return parseInt(this.value, 10)
     }
 }
