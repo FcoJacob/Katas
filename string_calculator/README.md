@@ -8,8 +8,8 @@ Crea una calculadora de string simple. Un método Add() que recibe hasta dos nú
 
 ## 📝 Requerimientos
 
-- [ ] Para cadena vacía devolverá 0
-- [ ] Para cadena con un valor devolverá su valor.
+- [x] Para cadena vacía devolverá 0
+- [x] Para cadena con un valor devolverá su valor.
 - [ ] Para dos valores separados por comas devolverá la suma de los valores.
 - [ ] Añade la posibilidad de que el método, reciba una cantidad indeterminada de números.
 - [ ] Añadir la posibilidad de que el método, soporte retornos de carro como separador (además de comas).
