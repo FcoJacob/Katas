@@ -10,7 +10,7 @@ Crea una calculadora de string simple. Un método Add() que recibe hasta dos nú
 
 - [x] Para cadena vacía devolverá 0
 - [x] Para cadena con un valor devolverá su valor.
-- [ ] Para dos valores separados por comas devolverá la suma de los valores.
+- [x] Para dos valores separados por comas devolverá la suma de los valores.
 - [ ] Añade la posibilidad de que el método, reciba una cantidad indeterminada de números.
 - [ ] Añadir la posibilidad de que el método, soporte retornos de carro como separador (además de comas).
 - [ ] Soportar diferentes separadores, para hacer el cambio la cadena deberá empezar con el siguiente formato: "//[delimeter]\n[numbers...]" -> Ejemplo: "//;\n1;2" devolverá 3.
