@@ -18,4 +18,8 @@ describe('StringCalculator', () => {
         const calculator = new StringCalculator("1,2,3,4");
         expect(calculator.add()).toBe(10);
     });
+    it('should return the sum of all values, when receiving a string with trolley-separator numbers', () => {
+        const calculator = new StringCalculator("1\n2\n3\n4");
+        expect(calculator.add()).toBe(10);
+    });
 })
