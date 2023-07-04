@@ -10,4 +10,8 @@ describe('StringCalculator', () => {
         const calculator = new StringCalculator("1");
         expect(calculator.add()).toBe(1);
     });
+    it('should return the sum of the values, when receiving a string with comma-separated numbers', () => {
+        const calculator = new StringCalculator("1,2");
+        expect(calculator.add()).toBe(3);
+    });
 })
