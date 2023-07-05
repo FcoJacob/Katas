@@ -41,6 +41,6 @@ describe('StringCalculator', () => {
     it('should throw a "negatives not alloweed" exception, when entering negative values', () => {
         const calculator = new StringCalculator("//[;]\n-4");
 
-        expect(calculator.add()).toThrow('negatives not allowed');
+        expect(() => calculator.add()).toThrow('negatives not allowed');
     });
 })

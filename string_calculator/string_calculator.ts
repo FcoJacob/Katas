@@ -6,6 +6,13 @@ export default class StringCalculator {
     }
 
     public add(): number {
+        if (this.value.includes('-')) {
+            const splitted = this.value.split('-');
+            if(!Number.isNaN(splitted[1])) {
+                throw new Error('negatives not allowed');
+            }
+        }
+
         if (this.value === '') return 0;
         if (this.value.length === 1) return parseInt(this.value, 10);
         if (this.value.includes('\n')) {
