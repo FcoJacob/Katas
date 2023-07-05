@@ -13,8 +13,8 @@ Crea una calculadora de string simple. Un método Add() que recibe hasta dos nú
 - [x] Para dos valores separados por comas devolverá la suma de los valores.
 - [x] Añade la posibilidad de que el método, reciba una cantidad indeterminada de números.
 - [x] Añadir la posibilidad de que el método, soporte retornos de carro como separador (además de comas).
-- [ ] Soportar diferentes separadores, para hacer el cambio la cadena deberá empezar con el siguiente formato: "//[delimeter]\n[numbers...]" -> Ejemplo: "//;\n1;2" devolverá 3.
-- [ ] No permitir números negativos. Esto deve lanzar una excepción "Negatives not alloweed - [número negativo pasado como argumento]".
+- [x] Soportar diferentes separadores, para hacer el cambio la cadena deberá empezar con el siguiente formato: "//[delimeter]\n[numbers...]" -> Ejemplo: "//;\n1;2" devolverá 3.
+- [ ] No permitir números negativos. Esto debe lanzar una excepción "Negatives not alloweed - [número negativo pasado como argumento]".
 - [ ] Mostrar todos los valores negativos, pasados como argumento.
 - [ ] Valores mayores a 1000 deben ignorarse 2 + 1001 = 2.
 - [ ] Separadores personalizados pueden ser de cualquier longitud.
