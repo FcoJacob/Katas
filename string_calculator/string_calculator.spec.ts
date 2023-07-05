@@ -22,4 +22,8 @@ describe('StringCalculator', () => {
         const calculator = new StringCalculator("1\n2\n3\n4");
         expect(calculator.add()).toBe(10);
     });
+    it('should support different separators, if the string starts with "//[delimiter]\n..."', () => {
+        const calculator = new StringCalculator("//[;]\n1;2;3;4");
+        expect(calculator.add()).toBe(10);
+    });
 })
