@@ -43,4 +43,10 @@ describe('StringCalculator', () => {
 
         expect(() => calculator.add()).toThrow('negatives not allowed');
     });
+
+    it.only('should show all negative values, passed as an argument', () => {
+        const calculator = new StringCalculator("//[;]\n-4;-3;-2;-1");
+
+        expect(() => calculator.add()).toThrow('negatives not allowed (-4, -3, -2, -1)');
+    });
 })
