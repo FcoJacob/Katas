@@ -6,11 +6,19 @@ export default class StringCalculator {
     }
 
     public add(): number {
-        if (this.value.includes('-')) {
-            const splitted = this.value.split('-');
-            if(!Number.isNaN(splitted[1])) {
-                throw new Error('negatives not allowed');
+        if (this.value.includes('\n')) {
+            let values: string[] = [];
+            const lines: string[] = this.value.split('\n');
+            if (lines[0].includes('//[')) {
+                const delimiter: string = lines[0].split('//[')[1].split(']')[0];
+                values = lines[1].split(delimiter);
+                const anyValuesAreNegative: boolean = values.every((value: string): boolean => parseInt(value) < 0)
+                if (anyValuesAreNegative) {
+                    throw new Error(`negatives not allowed, (${values})`);
+                }
+                return values.map(Number).reduce((a: number, b:number) => a + b, 0);
             }
+            return this.value.split('\n').map(Number).reduce((a: number, b:number) => a + b, 0)
         }
 
         if (this.value === '') return 0;
@@ -19,11 +27,11 @@ export default class StringCalculator {
             const lines = this.value.split('\n');
             if (lines[0].includes('//[')) {
                 const delimiter = lines[0].split('//[')[1].split(']')[0];
-                return lines[1].split(delimiter).map(Number).reduce((a, b) => a + b, 0);
+                return lines[1].split(delimiter).map(Number).reduce((a: number, b:number) => a + b, 0);
             }
-            return this.value.split('\n').map(Number).reduce((a, b) => a + b, 0)
+            return this.value.split('\n').map(Number).reduce((a: number, b:number) => a + b, 0)
         }
-        if (this.value.includes(',')) return this.value.split(',').map(Number).reduce((a, b) => a + b, 0);
+        if (this.value.includes(',')) return this.value.split(',').map(Number).reduce((a: number, b:number) => a + b, 0);
         return 0
     }
 }

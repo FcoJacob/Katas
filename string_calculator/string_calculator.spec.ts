@@ -41,12 +41,12 @@ describe('StringCalculator', () => {
     it('should throw a "negatives not alloweed" exception, when entering negative values', () => {
         const calculator = new StringCalculator("//[;]\n-4");
 
-        expect(() => calculator.add()).toThrow('negatives not allowed');
+        expect(() => calculator.add()).toThrow('negatives not allowed, (-4)');
     });
 
-    it.only('should show all negative values, passed as an argument', () => {
+    it('should show all negative values, passed as an argument', () => {
         const calculator = new StringCalculator("//[;]\n-4;-3;-2;-1");
 
-        expect(() => calculator.add()).toThrow('negatives not allowed (-4, -3, -2, -1)');
+        expect(() => calculator.add()).toThrow('negatives not allowed, (-4,-3,-2,-1)');
     });
 })
