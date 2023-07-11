@@ -49,4 +49,10 @@ describe('StringCalculator', () => {
 
         expect(() => calculator.add()).toThrow('negatives not allowed, (-4,-3,-2,-1)');
     });
+
+    it('should Values greater than 1000 should be ignored', () => {
+        const calculator = new StringCalculator("//[;]\n4;3;1002;1");
+
+        expect(calculator.add()).toBe(8);
+    });
 })
