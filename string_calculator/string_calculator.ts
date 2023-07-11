@@ -20,6 +20,7 @@ export default class StringCalculator {
             if (delimiterExtraction.includes('//[')) {
                 delimiter = delimiterExtraction.split('//[')[1].split(']')[0];
                 valuesToOperate = valuesExtraction.split(delimiter);
+                valuesToOperate = valuesToOperate.filter((value: string) => parseInt(value) < 1000);
 
                 const anyValuesAreNegative: boolean = valuesToOperate.every((value: string): boolean => parseInt(value) < 0)
                 if (anyValuesAreNegative) {
