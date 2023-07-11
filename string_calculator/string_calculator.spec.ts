@@ -55,4 +55,10 @@ describe('StringCalculator', () => {
 
         expect(calculator.add()).toBe(8);
     });
+
+    it('should customised dividers can be of any length', () => {
+        const calculator = new StringCalculator("//[;%]\n4;%3;%2;%1");
+
+        expect(calculator.add()).toBe(10);
+    });
 })
