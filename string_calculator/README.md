@@ -20,3 +20,7 @@ Crea una calculadora de string simple. Un método Add() que recibe hasta dos nú
 - [x] Separadores personalizados pueden ser de cualquier longitud.
 - [x] Soportar multiples separadores, con este formato: "//[delimeter1][delimeter2]\n[numbers...]" -> Ejemplo: "//[*][%]\n1*2%3" devolverá 6
 - [x] Multiples separadores sin longitud maxima.
+
+## Notas
+
+Me he ajustado a los requerimientos y puede que existan casos no cubiertos, dejen sus notas para mejorar.
