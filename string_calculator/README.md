@@ -18,5 +18,5 @@ Crea una calculadora de string simple. Un método Add() que recibe hasta dos nú
 - [x] Mostrar todos los valores negativos, pasados como argumento.
 - [x] Valores mayores a 1000 deben ignorarse 2 + 1001 = 2.
 - [x] Separadores personalizados pueden ser de cualquier longitud.
-- [-] Soportar multiples separadores, con este formato: "//[delimeter1][delimeter2]\n[numbers...]" -> Ejemplo: "//[*][%]\n1*2%3" devolverá 6
-- [ ] Multiples separadores sin longitud maxima.
+- [x] Soportar multiples separadores, con este formato: "//[delimeter1][delimeter2]\n[numbers...]" -> Ejemplo: "//[*][%]\n1*2%3" devolverá 6
+- [x] Multiples separadores sin longitud maxima.

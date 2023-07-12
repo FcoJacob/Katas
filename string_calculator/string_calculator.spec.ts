@@ -67,4 +67,10 @@ describe('StringCalculator', () => {
 
         expect(calculator.add()).toBe(10);
     });
+
+    it('should support multiple separators, no max length', () => {
+        const calculator = new StringCalculator("//[*.****][%][*]\n1*.****2%3*4");
+
+        expect(calculator.add()).toBe(10);
+    });
 })
