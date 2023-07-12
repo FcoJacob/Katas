@@ -12,14 +12,17 @@ export default class StringCalculator {
 
         if (this.userEnteredString.includes('\n')) {
             let valuesToOperate: string[] = [];
-            let delimiter: string = '';
+            let delimiters: string[] = [];
             const delimiterAndValues: string[] = this.userEnteredString.split('\n');
             const delimiterExtraction: string = delimiterAndValues[0];
-            const valuesExtraction: string = delimiterAndValues[1];
+            let valuesExtraction: string | any = delimiterAndValues[1];
 
-            if (delimiterExtraction.includes('//[')) {
-                delimiter = delimiterExtraction.split('//[')[1].split(']')[0];
-                valuesToOperate = valuesExtraction.split(delimiter);
+            if (delimiterExtraction.includes('//')) {
+                delimiters = delimiterExtraction.substring(2, delimiterExtraction.length - 1).split(']').map(delimiter => delimiter.replace('[', ''));
+                delimiters.forEach(delimiter => {
+                    valuesExtraction = valuesExtraction.replaceAll(delimiter, ',')
+                })
+                valuesToOperate = valuesExtraction.split(',');
                 valuesToOperate = valuesToOperate.filter((value: string) => parseInt(value) < 1000);
 
                 const anyValuesAreNegative: boolean = valuesToOperate.every((value: string): boolean => parseInt(value) < 0)
